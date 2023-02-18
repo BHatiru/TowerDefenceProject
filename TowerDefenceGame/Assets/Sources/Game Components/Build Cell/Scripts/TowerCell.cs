@@ -10,14 +10,16 @@ public class TowerCell : MonoBehaviour, IMouseInteractable
 
     private MeshRenderer _meshRenderer;
     private bool _selected;
+    private bool _isCellOccupied;
 
     private void Awake(){
         _meshRenderer = GetComponent<MeshRenderer>();
     }
+    #region IMouseInteractable methods
     public void OnClick()
     {
         if(_selected == false)
-        
+        SceneEventSystem.Instance.NotifyCellSelected(this);
         _meshRenderer.material = _onSelectMaterial;
         _selected = true;
     }
@@ -42,5 +44,24 @@ public class TowerCell : MonoBehaviour, IMouseInteractable
     public void Deselect(){
         _selected = false;
         _meshRenderer.material = _defaultMaterial;
+
+        SceneEventSystem.Instance.NotifyCellDeselected(this);
     }
+
+    public Vector3 GetPosition()
+    {
+        return transform.position;
+    }
+    #endregion
+
+    public void OccupyCell()
+    {
+        _isCellOccupied = true;
+    }
+
+    public bool IsCellOccupied()
+    {
+        return _isCellOccupied;
+    } 
+
 }

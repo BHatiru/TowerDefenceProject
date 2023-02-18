@@ -8,4 +8,5 @@ public interface IMouseInteractable
     void OnHoverExit();
     void OnClick();
     void Deselect();
+    Vector3 GetPosition();
 }

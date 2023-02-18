@@ -10,25 +10,33 @@ public class BuildTowerPanel : MonoBehaviour
     [SerializeField] private GameObject _buttonPrefab;
     [SerializeField] private TowerLibrary _towerLibrary;
     [SerializeField] private BuildSystem _buildSystem;
+    [SerializeField] private Animator _animator;
     private void Start()
     {
-        foreach (var towerData in _towerLibrary.Library){
+        foreach (TowerData towerData in _towerLibrary.Library)
+        {
             GameObject newButton = Instantiate(_buttonPrefab);
             newButton.transform.SetParent(transform);
+
+            TextMeshProUGUI text = newButton.GetComponentInChildren<TextMeshProUGUI>();
+            //text.text = towerData.Name;
             Image image = newButton.GetComponent<Image>();
             image.sprite = towerData.Icon;
 
-            TextMeshProUGUI text = newButton.GetComponentInChildren<TextMeshProUGUI>();
-            text.text = towerData.Name;
+            UnityAction action = () =>
+            {
+                _buildSystem.BuildTower(towerData.TypeOfTower);
+            };
 
             Button button = newButton.GetComponent<Button>();
-            button.onClick.AddListener(BuildCannonTower);
+            button.onClick.AddListener(action);
         }
     }
 
-    private void BuildCannonTower()
-    {
-        _buildSystem.BuildTower(_towerLibrary.Library[0], new Vector3(19.733f, 1.2f, -27.16f));
+    public void Show(){
+        _animator.SetBool("show", true);
     }
-
+    public void Hide(){
+        _animator.SetBool("show", false);
+    }
 }

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class SelectionSystem : MonoBehaviour
 {
@@ -10,10 +11,18 @@ public class SelectionSystem : MonoBehaviour
     [SerializeField] private LayerMask _interactableObjectMask;
     [SerializeField] private Camera _camera;
 
+    public IMouseInteractable CurrentSelected => _currentSelected;
     private IMouseInteractable _currentInteractable;
     private IMouseInteractable _currentSelected;
+    public Vector3 SelectedObjectPosition => _currentSelected == null ? Vector3.zero : _currentSelected.GetPosition();
+        
     void Update()
     {
+        if(EventSystem.current.IsPointerOverGameObject()) return;
+        SelectionUpdate();
+    }
+
+    private void SelectionUpdate(){
         if (Input.GetMouseButtonDown(0))
         {
 
@@ -37,6 +46,8 @@ public class SelectionSystem : MonoBehaviour
             }
         }
     }
+
+    
     private void FixedUpdate()
     {
         Ray ray = _camera.ScreenPointToRay(Input.mousePosition);

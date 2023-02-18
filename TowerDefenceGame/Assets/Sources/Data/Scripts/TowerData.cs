@@ -5,10 +5,21 @@ using UnityEngine;
 
 public class TowerData : ScriptableObject
 {
+    public TowerType TypeOfTower;
+
+    [Header("Settings")]
     public string Name;
-    public Sprite Icon;
-    public float MaxHealth;
     public float BaseDamage;
+    public float MaxHealth;
     public float AttackRate;
+
+    [Header("Resources")]
+    public Sprite Icon;
     public GameObject TowerPrefab;
+
+    public enum TowerType
+    {
+        CannonTower = 0,
+        BowTower = 1
+    }
 }

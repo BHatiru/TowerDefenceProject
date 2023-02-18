@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6272899bac49faf4d832cc7b61033919, type: 3}
   m_Name: Other Tower Data
   m_EditorClassIdentifier: 
+  TypeOfTower: 1
   Name: Other Tower
-  Icon: {fileID: 21300000, guid: 936409326437d6b4aa4e1081ea36ca95, type: 3}
-  MaxHealth: 100
   BaseDamage: 100
+  MaxHealth: 100
   AttackRate: 3
+  Icon: {fileID: 21300000, guid: 936409326437d6b4aa4e1081ea36ca95, type: 3}
   TowerPrefab: {fileID: 0}
