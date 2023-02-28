@@ -6,6 +6,7 @@ public class BuildSystem : MonoBehaviour
 {
    [SerializeField] private TowerLibrary _towerLibrary;
    [SerializeField] private SelectionSystem _selectionSystem;
+   [SerializeField] private TowerUpgradeSystem _upgradeSystem;
 
    private Dictionary<TowerData.TowerType, TowerData> _towerDataMap;
 
@@ -22,15 +23,20 @@ public class BuildSystem : MonoBehaviour
       IMouseInteractable currentSelected = _selectionSystem.CurrentSelected;
 
       if(currentSelected is TowerCell cell){
-         if(cell.IsCellOccupied()){
+         if(cell.IsCellUsed()){
             return;
          }
          GameObject prefab = _towerDataMap[towerType].TowerPrefab;
          Vector3 position = _selectionSystem.SelectedObjectPosition;
          GameObject tower = Instantiate(prefab, position, Quaternion.identity);
+         BaseTower baseTower = tower.GetComponent<BaseTower>();
 
+         baseTower?.Initialize(_towerDataMap[towerType]);
+
+         
          StartCoroutine(BuildTowerInTime(tower, 2f));
-         cell.OccupyCell();
+         _upgradeSystem.RegisterTower(currentSelected, baseTower);
+         cell.UseCell();
          
       }
       

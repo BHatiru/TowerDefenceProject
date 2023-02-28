@@ -1,49 +1,52 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class TowerCell : MonoBehaviour, IMouseInteractable
 {
-    [SerializeField] private Material _defaultMaterial;
-    [SerializeField] private Material _onHoverMaterial;
-    [SerializeField] private Material _onSelectMaterial;
+    [SerializeField] private Material _hoverMaterial;
+    [SerializeField] private Material _defualMaterial;
+    [SerializeField] private Material _selectedMaterial;
 
-    private MeshRenderer _meshRenderer;
     private bool _selected;
-    private bool _isCellOccupied;
+    private bool _isCellUsed;
+    private MeshRenderer _meshRenderer;
 
-    private void Awake(){
+    private void Awake()
+    {
         _meshRenderer = GetComponent<MeshRenderer>();
     }
+
     #region IMouseInteractable methods
     public void OnClick()
     {
         if(_selected == false)
-        SceneEventSystem.Instance.NotifyCellSelected(this);
-        _meshRenderer.material = _onSelectMaterial;
-        _selected = true;
+        {
+            _meshRenderer.material = _selectedMaterial;
+            _selected = true;
+
+            SceneEventSystem.Instance.NotifyCellSelected(this);
+        }
     }
 
     public void OnHoverEnter()
     {
-        if(_selected == false){
-          
-        _meshRenderer.material = _onHoverMaterial;
+        if(_selected == false)
+        {
+            _meshRenderer.material = _hoverMaterial;
         }
-        
     }
 
     public void OnHoverExit()
     {
-        if(_selected == false){
-        
-        _meshRenderer.material = _defaultMaterial;
+        if(_selected == false)
+        {
+            _meshRenderer.material = _defualMaterial;
         }
     }
 
-    public void Deselect(){
+    public void Deselect()
+    {
         _selected = false;
-        _meshRenderer.material = _defaultMaterial;
+        _meshRenderer.material = _defualMaterial;
 
         SceneEventSystem.Instance.NotifyCellDeselected(this);
     }
@@ -52,16 +55,16 @@ public class TowerCell : MonoBehaviour, IMouseInteractable
     {
         return transform.position;
     }
+
     #endregion
 
-    public void OccupyCell()
+    public void UseCell()
     {
-        _isCellOccupied = true;
+        _isCellUsed = true;
     }
 
-    public bool IsCellOccupied()
+    public bool IsCellUsed()
     {
-        return _isCellOccupied;
-    } 
-
+        return _isCellUsed;
+    }
 }

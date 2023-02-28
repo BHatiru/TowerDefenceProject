@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6272899bac49faf4d832cc7b61033919, type: 3}
+  m_Name: MachineGun Tower Data
+  m_EditorClassIdentifier: 
+  TypeOfTower: 0
+  Icon: {fileID: 21300000, guid: bb009aa971ec460479a94255316a5827, type: 3}
+  TowerPrefab: {fileID: 6778189667466521770, guid: 7038734f1cd6c094b86ec4076fb8cf62, type: 3}
+  UpgradeCount: 0
+  UpdageInfo:
+  - Name: 
+    BaseDamage: 0
+    SellPrice: 0
+    UpgradePrice: 0
+    AttackRate: 0
+    AttackRange: 0
+    Prefab: {fileID: 0}
+  - Name: 
+    BaseDamage: 0
+    SellPrice: 0
+    UpgradePrice: 0
+    AttackRate: 0
+    AttackRange: 0
+    Prefab: {fileID: 0}
+  - Name: 
+    BaseDamage: 0
+    SellPrice: 0
+    UpgradePrice: 0
+    AttackRate: 0
+    AttackRange: 0
+    Prefab: {fileID: 0}

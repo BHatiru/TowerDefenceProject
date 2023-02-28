@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6272899bac49faf4d832cc7b61033919, type: 3}
+  m_Name: Lazer Tower Data
+  m_EditorClassIdentifier: 
+  TypeOfTower: 2
+  Icon: {fileID: 21300000, guid: 33b5fd5491a85c3419477c14e5b96d88, type: 3}
+  TowerPrefab: {fileID: 726418656744557286, guid: f06939017abd6b04a9502b6d7ec55e73, type: 3}
+  UpgradeCount: 0
+  UpdageInfo:
+  - Name: Lazer T. lvl 0
+    BaseDamage: 0
+    SellPrice: 0
+    UpgradePrice: 0
+    AttackRate: 0
+    AttackRange: 0
+    Prefab: {fileID: 0}
+  - Name: Lazer T. lvl 1
+    BaseDamage: 0
+    SellPrice: 0
+    UpgradePrice: 0
+    AttackRate: 0
+    AttackRange: 0
+    Prefab: {fileID: 2445443960285593175, guid: f06939017abd6b04a9502b6d7ec55e73, type: 3}
+  - Name: Lazer T. lvl 2
+    BaseDamage: 0
+    SellPrice: 0
+    UpgradePrice: 0
+    AttackRate: 0
+    AttackRange: 0
+    Prefab: {fileID: 2445443960285593175, guid: f06939017abd6b04a9502b6d7ec55e73, type: 3}

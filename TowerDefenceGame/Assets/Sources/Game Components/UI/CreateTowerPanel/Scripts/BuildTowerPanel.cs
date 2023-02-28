@@ -18,7 +18,7 @@ public class BuildTowerPanel : MonoBehaviour
             GameObject newButton = Instantiate(_buttonPrefab);
             newButton.transform.SetParent(transform);
 
-            TextMeshProUGUI text = newButton.GetComponentInChildren<TextMeshProUGUI>();
+            //TextMeshProUGUI text = newButton.GetComponentInChildren<TextMeshProUGUI>();
             //text.text = towerData.Name;
             Image image = newButton.GetComponent<Image>();
             image.sprite = towerData.Icon;
