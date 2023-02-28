@@ -22,7 +22,7 @@ public class TowerData : ScriptableObject
         public float SellPrice;
         public float UpgradePrice;
         public float AttackRate;
-        public float AttackRange;
+        public float AttackRadius;
         public GameObject Prefab;
     }
 

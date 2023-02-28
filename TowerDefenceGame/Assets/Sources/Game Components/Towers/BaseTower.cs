@@ -1,32 +1,53 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.PackageManager.Requests;
 using UnityEngine;
 
 public class BaseTower : MonoBehaviour
 {
-    [SerializeField] protected string Name;
-    [SerializeField] protected float BaseDamage;
-    [SerializeField] protected float SellPrice;
-    [SerializeField] protected float BuildPrice;
-    [SerializeField] protected float AttackRate;
-    [SerializeField] protected float AttackRange;
+    protected string Name;
+    protected float BaseDamage;
+    protected float SellPrice;
+    protected float BuildPrice;
+    protected float AttackRate;
+    protected float AttackRadius;
+    protected Vector3 TowerPos;
 
-    [SerializeField] protected int Level;
+    protected int Level;
     [SerializeField] protected TowerData TowerData;
 
-    [Header("Tower Levels")]
+    [Header("Level Objects")]
     [SerializeField] private GameObject[] _towerLevels;
+    [SerializeField] protected Transform _rotateElementHorizontal;
+    [SerializeField] protected Transform _rotateElementVertical;
 
-    public void Initialize(TowerData towerData)
+    protected List<BaseEnemy> Enemies;
+    protected List<BaseEnemy> EnemiesInRadius;
+    public void Initialize(TowerData towerData, List<BaseEnemy> enemies)
     {
         Level = 0;
         TowerData = towerData;
+        Enemies = enemies;
+        EnemiesInRadius = new ();
+        TowerPos = transform.position;
         UpdateStats();
+    }
+    private void FixedUpdate()
+    {
+        FindEnemies();
     }
 
     protected void FindEnemies()
     {
-
+        EnemiesInRadius.Clear();
+        for(int i=0;i<Enemies.Count;i++){
+            
+            float distance = Vector3.Distance(TowerPos, Enemies[i].transform.position);
+            if(distance <= AttackRadius){
+                EnemiesInRadius.Add(Enemies[i]);
+            }
+        }
+        
     }
 
     protected void UpdateStats()
@@ -36,7 +57,7 @@ public class BaseTower : MonoBehaviour
         BaseDamage = levelInfo.BaseDamage;
         SellPrice = levelInfo.SellPrice;
         AttackRate = levelInfo.AttackRate;
-        AttackRange = levelInfo.AttackRange;
+        AttackRadius = levelInfo.AttackRadius;
         BuildPrice = levelInfo.UpgradePrice;
     }
 

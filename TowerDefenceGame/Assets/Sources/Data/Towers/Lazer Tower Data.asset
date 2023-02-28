@@ -15,26 +15,26 @@ MonoBehaviour:
   TypeOfTower: 2
   Icon: {fileID: 21300000, guid: 33b5fd5491a85c3419477c14e5b96d88, type: 3}
   TowerPrefab: {fileID: 726418656744557286, guid: f06939017abd6b04a9502b6d7ec55e73, type: 3}
-  UpgradeCount: 0
+  UpgradeCount: 3
   UpdageInfo:
   - Name: Lazer T. lvl 0
     BaseDamage: 0
     SellPrice: 0
     UpgradePrice: 0
-    AttackRate: 0
-    AttackRange: 0
+    AttackRate: 10
+    AttackRadius: 10
     Prefab: {fileID: 0}
   - Name: Lazer T. lvl 1
     BaseDamage: 0
     SellPrice: 0
     UpgradePrice: 0
     AttackRate: 0
-    AttackRange: 0
+    AttackRadius: 10
     Prefab: {fileID: 2445443960285593175, guid: f06939017abd6b04a9502b6d7ec55e73, type: 3}
   - Name: Lazer T. lvl 2
     BaseDamage: 0
     SellPrice: 0
     UpgradePrice: 0
     AttackRate: 0
-    AttackRange: 0
+    AttackRadius: 10
     Prefab: {fileID: 2445443960285593175, guid: f06939017abd6b04a9502b6d7ec55e73, type: 3}
